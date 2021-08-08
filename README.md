@@ -2,7 +2,7 @@
 
 This simple node js application simply opens an alchemy websocket, initialises a smart contract using web3 for the game "cometh", registers some event listeners for in-game events from the smart contract, and when received, posts information about the event to a Discord webhook.
 
-# usage
+## usage
 
 For this to work you need to supply your own .env file specifying the following:
 
@@ -13,7 +13,7 @@ Then to run locally simply:
   
 ```$ node index.js```
 
-Roadmap
+## Roadmap
   
 * Deploy as a docker container so this can run constantly
 * Add support for other games / dapps
