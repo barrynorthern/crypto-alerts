@@ -6,8 +6,8 @@ This simple node js application simply opens an alchemy websocket, initialises a
 
 For this to work you need to supply your own .env file specifying the following:
 
-* WEB3_SOCKETS=wss://polygon-mainnet.g.alchemy.com/v2/<YOUR-APP-KEY>
-* HOOK_COMETH=https://discordapp.com/api/webhooks/<YOUR-DISCORD-WEBHOOK>
+* ```WEB3_SOCKETS=wss://polygon-mainnet.g.alchemy.com/v2/<YOUR-APP-KEY>```
+* ```HOOK_COMETH=https://discordapp.com/api/webhooks/<YOUR-DISCORD-WEBHOOK>```
  
 Then to run locally simply:
   
