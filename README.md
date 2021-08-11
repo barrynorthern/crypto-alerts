@@ -16,7 +16,8 @@ Then to run locally simply:
 ## Roadmap
   
 * ~Deploy as a docker container so this can run constantly~
-* Improve event subscription to prevent multiple listeners
-* Refactor to generalise event subscription
-* Improve messaging formats
+* ~Improve event subscription to prevent multiple listeners~
+* ~Refactor to generalise event subscription~
+* ~Improve messaging formats~
+* ~Create unit tests for dapp message handlers~
 * Add support for other games / dapps
