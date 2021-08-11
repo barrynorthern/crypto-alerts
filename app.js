@@ -1,4 +1,6 @@
 require("dotenv").config();
+const express = require('express');
+const app = express();
 const { Webhook, MessageBuilder  } = require('discord-webhook-node');
 const hook_cometh = new Webhook(process.env.HOOK_COMETH);
 
@@ -7,6 +9,9 @@ async function main() {
     const web3 = createAlchemyWeb3(process.env.WEB3_SOCKETS);
 
     initCometh(web3);
+
+    app.get('/', (req, res) => res.send('Crypto Alerts'));
+    app.listen(8080, () => console.log('Server ready'));
 }
 
 function initCometh(web3) {
@@ -84,8 +89,6 @@ function addComethSmartContractListeners(CometManagerV4) {
             sendToDiscord(hook_cometh, message);
         })
         .on('error', console.error);
-
-    console.log("Done ... listening ...");
 }
 
 main();

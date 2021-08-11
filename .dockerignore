@@ -2,3 +2,4 @@ node-modules
 npm-debug.log
 assets
 .gitignore
+dev.md
