@@ -6,7 +6,7 @@ See https://cloud.google.com/run/docs/deploying#command-line_1
 
 ### one-time initialization:
 ```gcloud auth configure-docker```
-gcloud builds submit --tag gcr.io/<project-id>/crypto-alerts```
+```gcloud builds submit --tag gcr.io/<project-id>/crypto-alerts```
 
 ### build:
 ```docker build -t crypto-alerts .```
