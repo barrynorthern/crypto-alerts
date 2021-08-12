@@ -18,7 +18,7 @@ gcloud builds submit --tag gcr.io/<project-id>/crypto-alerts```
 *note max-instance 1 is important here. If we have parallel instances, we will get multiple notifications*
 *note use a service like uptime robot to keep that instance alive.*
 
-# set max-instance for existing revision (will make a new revision, since revisions are immutable)
+### set max-instance for existing revision (will make a new revision, since revisions are immutable)
 ```gcloud run services update crypto-alerts --max-instances 1```
 
 ## TODO
