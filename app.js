@@ -44,12 +44,12 @@ function sendToDiscord(hook, message) {
         return;
     }
     console.log(message);
-    const embed = new MessageBuilder()
-        .setTitle(message.title)
-        .setColor(message.color)
-        .setThumbnail(message.thumbnail)
-        .setTimestamp();
-    hook.send(embed) 
+    // const embed = new MessageBuilder()
+    //     .setTitle(message.title)
+    //     .setColor(message.color)
+    //     .setThumbnail(message.thumbnail)
+    //     .setTimestamp();
+    hook.send("@everyone " + message.title) 
         .then(() => console.log('(sent to discord)'))
         .catch(err => console.log(err.message));
 }
