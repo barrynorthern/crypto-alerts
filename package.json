@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "build": "node scripts/deploy.js"
   },
   "author": "Barry Northern",
   "dependencies": {
