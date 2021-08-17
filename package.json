@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "build": "node scripts/deploy.js"
+    "build": "node scripts/deploy.js",
+    "log": "node scripts/dev-webhook.js --"
   },
   "author": "Barry Northern",
   "dependencies": {
