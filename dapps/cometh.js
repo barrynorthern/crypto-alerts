@@ -7,8 +7,9 @@ function getComethSolName(comet) {
 var handlers = {
     NewStakingComet: {
         getMessage: (event) => {
+            var sol = getComethSolName(event.returnValues);
             return {
-                title: "A new radioactive comet appeared on " + getComethSolName(event.returnValues),
+                title: "@" + sol.toLowerCase() + " A new radioactive comet appeared on " + sol,
                 color: '#5ae048',
                 thumbnail: comethLogoUrl
             };
@@ -16,8 +17,9 @@ var handlers = {
     },
     NewComet: {
         getMessage: (event) => {
+            var sol = getComethSolName(event.returnValues);
             return {
-                title: "A new comet appeared on " + getComethSolName(event.returnValues),
+                title: "@" + sol.toLowerCase() + " A new comet appeared on " + sol,
                 color: '#00b0f4',
                 thumbnail: comethLogoUrl
             };
@@ -25,8 +27,9 @@ var handlers = {
     },
     RemoveComet: {
         getMessage: (event) => {
+            var sol = getComethSolName(event.returnValues);
             return {
-                title: "A comet expired on " + getComethSolName(event.returnValues),
+                title: "@" + sol.toLowerCase() + " A comet expired on " + sol,
                 color: '#a83531',
                 thumbnail: comethLogoUrl
             };

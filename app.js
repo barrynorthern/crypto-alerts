@@ -49,7 +49,7 @@ function sendToDiscord(hook, message) {
     //     .setColor(message.color)
     //     .setThumbnail(message.thumbnail)
     //     .setTimestamp();
-    hook.send("@everyone " + message.title) 
+    hook.send(message.title) 
         .then(() => console.log('(sent to discord)'))
         .catch(err => console.log(err.message));
 }

@@ -18,21 +18,21 @@ describe("Cometh", () => {
     describe("Get new radioactive comet event", () => {
         it("returns a message containing {title,color,thumbnail} in response to event if the event hash != last hash", () => {
             const event = createEvent("NewStakingComet", "0x1", { solarSystemID: "2" });
-            testEvent(event, "A new radioactive comet appeared on SOL3", "#5ae048");
+            testEvent(event, "@sol3 A new radioactive comet appeared on SOL3", "#5ae048");
         })
     });
     
     describe("Get new comet event", () => {
         it("returns a message containing {title,color,thumbnail} in response to event if the event hash != last hash", () => {
             const event = createEvent("NewComet", "0x2", { solarSystemID: "0" });
-            testEvent(event, "A new comet appeared on SOL1", "#00b0f4");
+            testEvent(event, "@sol1 A new comet appeared on SOL1", "#00b0f4");
         })
     });
 
     describe("Get an expired comet event", () => {
         it("returns a message containing {title,color,thumbnail} in response to event if the event hash != last hash", () => {
             const event = createEvent("RemoveComet", "0x3", { solarSystemID: "3" });
-            testEvent(event, "A comet expired on SOL4", "#a83531");
+            testEvent(event, "@sol4 A comet expired on SOL4", "#a83531");
         })
     });
 });
