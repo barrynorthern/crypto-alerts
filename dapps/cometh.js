@@ -1,15 +1,34 @@
 const comethLogoUrl = 'https://raw.githubusercontent.com/cometh-game/cometh-assets/main/logo.png';
 
-function getComethSolName(comet) {
-    return "SOL" + (parseInt(comet.solarSystemID, 10) + 1);
+function getSolIndex(comet) {
+    return parseInt(comet.solarSystemID, 10);
+}
+
+function getComethSolName(index) {
+    return "SOL" + (index + 1);
+}
+
+function getSolRole(index) {
+    const solRoles = [
+        "<@&876588925915922432>",
+        "<@&876589260185157652>",
+        "<@&876589438430507068>",
+        "<@&876589513307213876>"
+    ];
+    if (index < 0 || index >= solRoles.length) {
+        return "";
+    }
+    return solRoles[index];
 }
 
 var handlers = {
     NewStakingComet: {
         getMessage: (event) => {
-            var sol = getComethSolName(event.returnValues);
+            var solIndex = getSolIndex(event.returnValues)
+            var solName = getComethSolName(solIndex);
+            var solRole = getSolRole(solIndex);
             return {
-                title: "@" + sol.toLowerCase() + " A new radioactive comet appeared on " + sol,
+                title: solRole + " A new radioactive comet appeared on " + solName,
                 color: '#5ae048',
                 thumbnail: comethLogoUrl
             };
@@ -17,9 +36,11 @@ var handlers = {
     },
     NewComet: {
         getMessage: (event) => {
-            var sol = getComethSolName(event.returnValues);
+            var solIndex = getSolIndex(event.returnValues)
+            var solName = getComethSolName(solIndex);
+            var solRole = getSolRole(solIndex);
             return {
-                title: "@" + sol.toLowerCase() + " A new comet appeared on " + sol,
+                title: solRole + " A new comet appeared on " + solName,
                 color: '#00b0f4',
                 thumbnail: comethLogoUrl
             };
@@ -27,9 +48,11 @@ var handlers = {
     },
     RemoveComet: {
         getMessage: (event) => {
-            var sol = getComethSolName(event.returnValues);
+            var solIndex = getSolIndex(event.returnValues)
+            var solName = getComethSolName(solIndex);
+            var solRole = getSolRole(solIndex);
             return {
-                title: "@" + sol.toLowerCase() + " A comet expired on " + sol,
+                title: solRole + " A comet expired on " + solName,
                 color: '#a83531',
                 thumbnail: comethLogoUrl
             };
