@@ -34,7 +34,7 @@ function initDapp(web3, dapp) {
                 contract.events.allEvents().on('data', (data) => {
                     var handler = getEventHandler(dapp, data);
                     if (handler) {
-                        //sendToDiscord(hook, handler.getMessage(data));
+                        sendToDiscord(hook, handler.getMessage(data));
                     }
                 });
             }
