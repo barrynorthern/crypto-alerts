@@ -23,11 +23,12 @@ async function main() {
 
 function initDapp(web3, dapp) {
     console.log(dapp.name);
-    const hook = new Webhook(dapp.hook);
-    initDiscordBot(hook, dapp.bot);
     const contract = new web3.eth.Contract(dapp.abi, dapp.contract);    
     if (dapp.discords) {
-        for (let discord of discords) {
+        for (let discord of dapp.discords) {
+            // init hook
+            const hook = new Webhook(discord.hook);
+            initDiscordBot(hook, discord.bot);
             // event handling
             if (discord.handlers) {
                 contract.events.allEvents().on('data', (data) => {
