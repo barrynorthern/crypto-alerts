@@ -32,7 +32,7 @@ function initDapp(web3, dapp) {
             // event handling
             if (discord.handlers) {
                 contract.events.allEvents().on('data', (data) => {
-                    var handler = getEventHandler(dapp, data);
+                    var handler = getEventHandler(discord, data);
                     if (handler) {
                         sendToDiscord(hook, handler.getMessage(data));
                     }
