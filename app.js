@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require('express');
 const app = express();
-const { getEventHandler } = require('./utils');
+const { getEventHandler, initDiscordBot } = require('./utils');
 const { Webhook, MessageBuilder  } = require('discord-webhook-node');
 
 const dapps = [
@@ -17,26 +17,37 @@ async function main() {
         initDapp(web3, require('./dapps/' + dapp));
     }
 
-    app.get('/', (req, res) => res.send('Visit the Crypto Alerts Discord <a href="https://discord.gg/Wbsbsrv4">https://discord.gg/Wbsbsrv4</a>'));
+    app.get('/', (req, res) => res.send('<iframe src="https://discord.com/widget?id=870958070245781505&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>'));
     app.listen(8080, () => console.log('Server ready'));
 }
 
 function initDapp(web3, dapp) {
     console.log(dapp.name);
     const hook = new Webhook(dapp.hook);
-    initDiscordBot(hook);
+    initDiscordBot(hook, dapp.bot);
     const contract = new web3.eth.Contract(dapp.abi, dapp.contract);    
-    contract.events.allEvents().on('data', (data) => {
-        var handler = getEventHandler(dapp, data);
-        if (handler) {
-            sendToDiscord(hook, handler.getMessage(data));
+    if (dapp.discords) {
+        for (let discord of discords) {
+            // event handling
+            if (discord.handlers) {
+                contract.events.allEvents().on('data', (data) => {
+                    var handler = getEventHandler(dapp, data);
+                    if (handler) {
+                        //sendToDiscord(hook, handler.getMessage(data));
+                    }
+                });
+            }
+            // polling
+            if (discord.poll?.init) {
+                // init
+                discord.poll.init(contract);
+                //if (discord.poll.update && discord.poll.interval) {
+                // To do, schedule updates on an interval
+                //}
+            }
         }
-    });
-}
-
-function initDiscordBot(hook) {
-    hook.setUsername('crypto alerts');
-    hook.setAvatar('https://raw.githubusercontent.com/barrynorthern/crypto-alerts/master/assets/crypto-alert.png');
+    }
+    
 }
 
 function sendToDiscord(hook, message) {

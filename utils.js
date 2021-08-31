@@ -1,13 +1,10 @@
 const utils = {
-    getEventHandler: (dapp, event) => {
-        var handler = dapp.handlers[event.event];
-        if (!handler) {
-            return null;
-        } 
-        const skip = handler.lastestTransation == event.transactionHash;
-        handler.lastestTransation = event.transactionHash;
-        return skip ? null : handler;
-    }
+    getEventHandler: (dapp, event) => dapp.handlers[event.event],
+    
+    initDiscordBot: (hook, bot) => {
+        hook.setUsername(bot?.username || 'crypto alerts');
+        hook.setAvatar(bot?.avatar || 'https://raw.githubusercontent.com/barrynorthern/crypto-alerts/master/assets/crypto-alert.png');
+    },
 };
 
 module.exports = utils;
