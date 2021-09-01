@@ -51,28 +51,28 @@ describe("Cometh", () => {
     describe("Get new radioactive comet event (mars)", () => {
         it("returns a message containing {title,color,thumbnail} in response to event", () => {
             const event = createEvent("NewStakingComet", "0x1", { solarSystemID: "2" });
-            testEvent(cometh.discords[1], event, "@sol3 A new radioactive comet appeared on SOL3", "#5ae048");
+            testEvent(cometh.discords[1], event, "<@&882537839278047314> A new radioactive comet appeared on SOL3", "#5ae048");
         })
     });
     
     describe("Get new comet event (mars)", () => {
         it("returns a message containing {title,color,thumbnail} in response to event", () => {
             const event = createEvent("NewComet", "0x2", { solarSystemID: "0" });
-            testEvent(cometh.discords[1], event, "@sol1 A new comet appeared on SOL1", "#00b0f4");
+            testEvent(cometh.discords[1], event, "<@&882536879919104021> A new comet appeared on SOL1", "#00b0f4");
         })
     });
 
     describe("Get an expired comet event (mars)", () => {
         it("returns a message containing {title,color,thumbnail} in response to event", () => {
             const event = createEvent("RemoveComet", "0x3", { solarSystemID: "3" });
-            testEvent(cometh.discords[1], event, "@sol4 A comet expired on SOL4", "#a83531");
+            testEvent(cometh.discords[1], event, "<@&882537963974717470> A comet expired on SOL4", "#a83531");
         })
     });
 
     describe("Get an expired comet event on the remaining sol to test (mars)", () => {
         it("returns a message containing {title,color,thumbnail} in response to event", () => {
             const event = createEvent("RemoveComet", "0x4", { solarSystemID: "1" });
-            testEvent(cometh.discords[1], event, "@sol2 A comet expired on SOL2", "#a83531");
+            testEvent(cometh.discords[1], event, "<@&882537625066565673> A comet expired on SOL2", "#a83531");
         })
     });
 
